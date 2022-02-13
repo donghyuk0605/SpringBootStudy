@@ -62,5 +62,10 @@ public class CrudController {
     public String deleteMember(@RequestParam(value = "name") String name) {
         return crudService.deleteMember(name);
     }
+    
+    @GetMapping("helloworld")
+    public String HelloWord() {
+        return "helloworld";
+    }
 
 }
