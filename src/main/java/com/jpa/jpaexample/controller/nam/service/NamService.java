@@ -1,4 +1,4 @@
-package com.jpa.jpaexample.service;
+package com.jpa.jpaexample.controller.nam.service;
 
 import com.jpa.jpaexample.domain.CrudEntity;
 import com.jpa.jpaexample.repository.CrudEntityRepository;
@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Service
-public class CrudService {
+public class NamService {
 
     @Autowired
     private CrudEntityRepository crudEntityRepository;
