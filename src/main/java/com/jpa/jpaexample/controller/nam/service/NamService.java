@@ -1,13 +1,15 @@
 package com.jpa.jpaexample.controller.nam.service;
 
-import com.jpa.jpaexample.domain.CrudEntity;
-import com.jpa.jpaexample.repository.CrudEntityRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.jpa.jpaexample.domain.CrudEntity;
+import com.jpa.jpaexample.repository.CrudEntityRepository;
 
 @Service
 public class NamService {
@@ -33,22 +35,27 @@ public class NamService {
     public List<CrudEntity> searchParamRepo(String name) {
         return crudEntityRepository.searchParamRepo(name);
     }
+    
+    public CrudEntity searchBoardDetail(CrudEntity crudEntity) {
+    	System.out.println(crudEntity);
+    	return crudEntityRepository.searchBoardDetail(crudEntity.getName());
+    }
 
-    public String insertMember(String name, int age) {
-        if(crudEntityRepository.findById(name).isPresent()) {
+    public String insertMember(CrudEntity crudEntity) {
+        if(crudEntityRepository.findById(crudEntity.getName()).isPresent()) {
             return "동일한 이름이 이미 있습니다";
         } else {
-            crudEntityRepository.save(CrudEntity.builder().name(name).age(age).build());
-            return "이름 : " + name + " 나이 : " + age + "으로 추가 되었습니다";
+            crudEntityRepository.save(crudEntity);
+            return "이름 : " + crudEntity.getName() + " 나이 : " + crudEntity.getAge() + "으로 추가 되었습니다";
         }
     }
 
-    public String updateMember(String name, int age) {
-        if(crudEntityRepository.findById(name).isEmpty()) { // 값 존재여부 확인
-            return "입력한 " + name + "이 존재하지 않습니다";
+    public String updateMember(CrudEntity crudEntity) {
+        if(crudEntityRepository.findById(crudEntity.getName()).isEmpty()) { // 값 존재여부 확인
+            return "입력한 " + crudEntity.getName() + "이 존재하지 않습니다";
         } else {
-            crudEntityRepository.save(CrudEntity.builder().name(name).age(age).build());
-            return name + "의 나이를 " + age + "로 변경 완료";
+        	crudEntityRepository.save(crudEntity);
+            return crudEntity.getName() + "의 나이를 " + crudEntity.getAge()+ "로 변경 완료";
         }
     }
 

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<form th:action="@{/nam/boardInsert}" method="post" th:object="${CrudEntity}" >
+		<div>
+			<input type="text" name="name">
+			<input type="text" name="age">
+			<input type="text" name="addr">
+			<input type="text" name="email">
+		</div>
+		<div>
+			<button type="submit">저장</button>
+		</div>	
+	</form>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<table class="tb_col">
+		<tr>
+			<th>name</th>
+			<th>age</th>
+		</tr>
+		<tr th:each="test : ${test}">
+			<td style="cursor: pointer;" th:text="${test.name}" th:onclick="'location.href=\''+ @{/nam/boardDetail(name=${test.name})} + '\''"></td>
+			<td th:text="${test.age}"></td>
+		</tr>
+		<tr>
+			<td>
+				<input type="button" th:onclick="'location.href=\''+ @{/nam/boardInsertPage} + '\''" value="글등록">
+			</td>
+		</tr>
+	</table>
+
+
+</body>
+
+</html>

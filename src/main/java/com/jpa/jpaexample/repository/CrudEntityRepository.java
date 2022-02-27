@@ -13,5 +13,8 @@ public interface CrudEntityRepository extends JpaRepository<CrudEntity, String> 
 
     @Query(value = "select name, age from sample_member where name = :name", nativeQuery=true)
     List<CrudEntity> searchParamRepo(@Param("name") String name);
+    
+    @Query(value = "select name, age, addr, email from sample_member where name = :name", nativeQuery=true)
+    CrudEntity searchBoardDetail(@Param("name") String name);
 
 }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+
+<body>
+	<form id="boardDetailForm" th:object="${CrudEntity}">
+		<div>
+			<input type="text" name="name" th:value="${boardDetail.name}">
+			<input type="text" name="age" th:value="${boardDetail.age}">
+			<input type="text" name="addr" th:value="${boardDetail.addr}">
+			<input type="text" name="email" th:value="${boardDetail.email}">
+		</div>
+		<div>
+			<input type="button" value="수정" id="boardUpdate" th:onclick="boardUpdate();">
+			<input type="button" value="삭제" id="boardDelete" th:onclick="boardDelete(${boardDetail.name});">
+		</div>	
+	</form>
+
+<script type="text/javascript">
+	function boardUpdate(){
+		var form = document.getElementById("boardDetailForm");
+		form.action="/nam/boardUpdate";
+		form.method="POST";
+		form.submit();
+	}
+	
+	function boardDelete(name){
+		form.action="/nam/boardUpdate?name"+name;
+		form.method="GET";
+		form.submit();
+	}
+</script>
+</body>
+</html>

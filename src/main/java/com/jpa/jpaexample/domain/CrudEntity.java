@@ -24,4 +24,10 @@ public class CrudEntity {
     @Column(nullable = false)
     private int age;
 
+    @Column(nullable = false)
+    private String addr;
+    
+    @Column(nullable = false)
+    private String email;
+
 }
